@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  ExternalId:
+    Type: String
+    Default: 5d745878-bbb7-48ae-8900-3409aaa16fca
+    Description: Your env0 Organization ID
+  SessionDuration:
+    Type: Number
+    Default: 3600
+    Description: Session duration in seconds
+Resources:
+  AssumeRole:
+    Type: AWS::IAM::Role
+    Properties: 
+      RoleName: Env0-AssumeRole
+      Description: |
+        Used by env0 to automate the deployment of Infrastructure from a Version Control System
+      AssumeRolePolicyDocument: !Sub |
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": "sts:AssumeRole",
+              "Principal": {
+                "AWS": "913128560467"
+              },
+              "Condition": {
+                "StringEquals": {
+                  "sts:ExternalId": "${ExternalId}"
+                }
+              }
+            }
+          ]
+        }
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+      MaxSessionDuration: !Ref SessionDuration
+      Tags: 
+        - Key: Owner
+          Value: env0
+        - Key: Purpose
+          Value: env0-learning
+Outputs:
+  ExternalId:
+    Value: !Ref ExternalId
+    Description: "ExternalID for env0 (should match your Organization ID)"
+  AssumeRoleArn:
+    Value: !GetAtt AssumeRole.Arn
+    Description: "Use this ARN in env0 credentials"
