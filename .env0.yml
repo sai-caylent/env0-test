@@ -8,6 +8,8 @@ environmentVariables:
     value: "env0-learning"
   - name: TF_VAR_environment
     value: "dev"  # This will be overridden per environment
+  - name: TF_VAR_aws_region
+    value: "us-east-1"  # Default AWS region
 
 # Environment-specific configurations
 # These will be set individually in each env0 environment:
