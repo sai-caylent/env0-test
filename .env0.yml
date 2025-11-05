@@ -3,13 +3,10 @@
 version: 1
 
 # Default environment variables (can be overridden per environment)
-environmentVariables:
-  - name: TF_VAR_project_name
-    value: "env0-learning"
-  - name: TF_VAR_environment
-    value: "dev"  # This will be overridden per environment
-  - name: TF_VAR_aws_region
-    value: "us-east-1"  # Default AWS region
+variables:
+  TF_VAR_project_name: "env0-learning"
+  TF_VAR_environment: "dev"
+  TF_VAR_aws_region: "us-east-1"
 
 # Environment-specific configurations
 # These will be set individually in each env0 environment:
