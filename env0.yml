@@ -1,0 +1,41 @@
+# .env0.yml - env0 configuration file for multi-environment setup
+
+version: 1
+
+# Default environment variables (can be overridden per environment)
+environmentVariables:
+  - name: TF_VAR_project_name
+    value: "env0-learning"
+  - name: TF_VAR_environment
+    value: "dev"  # This will be overridden per environment
+  - name: TF_VAR_aws_region
+    value: "us-east-1"  # Default AWS region
+
+# Environment-specific configurations
+# These will be set individually in each env0 environment:
+#
+# DEV Environment Variables:
+# - TF_VAR_environment: "dev"
+# - TF_VAR_aws_region: "us-east-1"
+# - COST_LIMIT: "50"
+#
+# STAGING Environment Variables:
+# - TF_VAR_environment: "staging" 
+# - TF_VAR_aws_region: "us-east-1"
+# - COST_LIMIT: "100"
+#
+# PROD Environment Variables:
+# - TF_VAR_environment: "prod"
+# - TF_VAR_aws_region: "us-west-2" 
+# - COST_LIMIT: "200"
+
+# Optional: Custom deployment hooks
+# deploy:
+#   before:
+#     - echo "Starting deployment..."
+#   after:
+#     - echo "Deployment completed!"
+
+# Optional: Cost policies (requires env0 Pro/Enterprise)
+# cost:
+#   maxCost: 100  # Maximum cost in USD per month
