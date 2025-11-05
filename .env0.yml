@@ -1,30 +1,8 @@
-# .env0.yml - env0 configuration file for multi-environment setup
-
+# .env0.yml - env0 configuration file
 version: 1
 
-# Default environment variables (can be overridden per environment)
-variables:
-  TF_VAR_project_name: "env0-learning"
-  TF_VAR_environment: "dev"
-  TF_VAR_aws_region: "us-east-1"
-
-# Environment-specific configurations
-# These will be set individually in each env0 environment:
-#
-# DEV Environment Variables:
-# - TF_VAR_environment: "dev"
-# - TF_VAR_aws_region: "us-east-1"
-# - COST_LIMIT: "50"
-#
-# STAGING Environment Variables:
-# - TF_VAR_environment: "staging" 
-# - TF_VAR_aws_region: "us-east-1"
-# - COST_LIMIT: "100"
-#
-# PROD Environment Variables:
-# - TF_VAR_environment: "prod"
-# - TF_VAR_aws_region: "us-west-2" 
-# - COST_LIMIT: "200"
+# Variables use Terraform defaults from variables.tf
+# Override per environment in env0 UI when needed
 
 # Optional: Custom deployment hooks
 # deploy:
@@ -35,4 +13,4 @@ variables:
 
 # Optional: Cost policies (requires env0 Pro/Enterprise)
 # cost:
-#   maxCost: 100  # Maximum cost in USD per month
+#   maxCost: 100
